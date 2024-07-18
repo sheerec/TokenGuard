@@ -1,0 +1,20 @@
+# scripts/block_data.py
+
+import requests
+
+def fetch_block_data(api_url, block_number):
+    """
+    Fetch data for a specific block from the blockchain.
+    
+    :param api_url: Base URL of the blockchain API
+    :param block_number: Number of the block
+    :return: Block data
+    """
+    response = requests.get(f'{api_url}/block/{block_number}')
+    response.raise_for_status()
+    data = response.json()
+    return data
+
+# Example usage:
+# block_data = fetch_block_data('https://api.blockchain.example.com', 123456)
+# print(block_data)
